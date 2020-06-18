@@ -13,4 +13,8 @@ router.post('/register', (req, res) => {
     )
 })
 
+router.get('/users', (req, res) => {
+    Helpers.getAll
+})
+
 module.exports = router
