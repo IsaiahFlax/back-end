@@ -1,7 +1,7 @@
 const express = require('express')
 const Helpers = require('../models/dbHelpers.js')
 const bcrypt = require('bcryptjs')
-
+const generateToken = require('../auth/gerneratetoken')
 const router = express.Router()
 
 router.post('/register', (req, res) => {
