@@ -16,6 +16,6 @@ server.get('/', (req, res) => {
 })
 
 server.use('/api/', userRouter)
-server.use('/api/locations', locationRouter)
+server.use('/api/locations/', locationRouter)
 
 module.exports = server
