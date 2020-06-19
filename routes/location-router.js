@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 })
 router.get('/:id', (req, res) => {
     const { id } = req.params
-    Helpers.getPro().then(locations => {
+    Helpers.findProductsByLocation().then(locations => {
         res.status(200).json(locations)
     }).catch()
 })
