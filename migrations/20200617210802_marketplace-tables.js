@@ -1,6 +1,10 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('users', users => {
+  return knex.schema.createTable('locations', locations => {
+    locations.increments()
+    locations.string('location', 255).notNullable().unique()
+  })
+  .createTable('users', users => {
       users.increments()
       users.string('username', 255).notNullable().unique()
       users.string('password', 255).notNullable()
@@ -27,6 +31,14 @@ exports.up = function(knex, Promise) {
       .inTable('categories')
       .onDelete('CASCADE')
       .onUpdate('CASCADE')
+      products.decimal('price')
+      products.integer('location_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('locations')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE')
   })
 };
 
@@ -35,4 +47,5 @@ exports.down = function(knex, Promise) {
     .dropTableIfExists('products')
     .dropTableIfExists('categories')
     .dropTableIfExists('users')
+    .dropTableIfExists('locations')
 };
