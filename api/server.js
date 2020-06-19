@@ -3,6 +3,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 
 const userRouter = require('../routes/user-router.js')
+const locationRouter = require('../routes/location-router.js')
 
 const server = express()
 
@@ -15,5 +16,6 @@ server.get('/', (req, res) => {
 })
 
 server.use('/api/', userRouter)
+server.use('/api/locations', locationRouter)
 
 module.exports = server

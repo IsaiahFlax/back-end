@@ -46,6 +46,22 @@ router.get('/users', (req, res) => {
         res.status(500).json({message: `Error getting users`})
     })
 })
+router.get('/users/:id', (req, res) => {
+    const {id } = req.params
+    Helpers.findById(id).then(user => {res.status(200).json(user)})
+    .catch(err => {
+        res.status(500).json({message: `Error getting user`})
+    })
+})
+
+router.get('/users/:id/products', (req, res) => {
+    const {id } = req.params
+    Helpers.findById(id).then(user => {res.status(200).json(user)})
+    .catch(err => {
+        res.status(500).json({message: `Error getting products`})
+    })
+})
+
 
 router.get('/products', (req, res) => {
     Helpers.getProducts().then(products => {res.status(200).json(products)})
@@ -53,5 +69,14 @@ router.get('/products', (req, res) => {
         res.status(500).json({message: `Error getting products`})
     })
 })
+
+router.get('/products/:id', (req, res) => {
+    const {id } = req.params
+    Helpers.findProductById(id).then(user => {res.status(200).json(user)})
+    .catch(err => {
+        res.status(500).json({message: `Error getting product`})
+    })
+})
+
 
 module.exports = router
