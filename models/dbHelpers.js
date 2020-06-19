@@ -31,4 +31,14 @@ function findById(id) {
 
 function getAllUsers() {
     return db('users');
-  }
+ }
+
+function getProducts() {
+    return db('products')
+ }
+
+ async function addProducts(products) {
+    return await db('products').insert(products, ['id'])
+    // const [id] = await db('users').insert(user)
+    // return findById(id)
+}
