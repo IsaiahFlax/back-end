@@ -64,7 +64,7 @@ function findProductsById(id) {
 
 function findProductsByLocation(id) {
     return db('products').join('locations', 'products.location_id', 'locations.id')
-    .select('products.name').where({location_id: id})
+    .select('locations.id', 'products.name').where({location_id: id})
 }
 
 function findProductsByUser(id) {
