@@ -27,7 +27,7 @@ router.post('/login', (req, res) => {
         return res.status(400).json({ message: 'username and password required'})
     }
 
-    Helpers.find(username)
+    Helpers.findUser(username)
     .then(user=>{
         if (user && bcrypt.compareSync(password, user.password)) {
             
@@ -41,9 +41,17 @@ router.post('/login', (req, res) => {
 })
 
 router.get('/users', (req, res) => {
-    Helpers.getAll().then(user => res.status(200).json(user))
+    Helpers.getAllUsers().then(user => {res.status(200).json(user)})
     .catch(err => {
         res.status(500).json({message: `Error getting users`})
+    }
+    )
+})
+
+router.get('/products', (req, res) => {
+    Helpers.getProducts.then(products => {res.status(200).json(products)})
+    .catch(err => {
+        res.status(500).json({message: `Error getting products`})
     }
     )
 })

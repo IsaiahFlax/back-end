@@ -7,11 +7,13 @@ const db = require('../dbConfig')
 module.exports = {
     addUser,
     findById,
-    getAll,
-    find
+    getAllUsers,
+    findUser,
+    getProducts,
+    addProducts
 }
 
-function find(username) {
+function findUser(username) {
     return db('users').where({ username }).first()
 }
 
@@ -27,6 +29,6 @@ function findById(id) {
       .first();
 }
 
-function getAll() {
+function getAllUsers() {
     return db('users');
   }
