@@ -48,7 +48,7 @@ router.get('/users', (req, res) => {
 })
 
 router.get('/products', (req, res) => {
-    Helpers.getProducts.then(products => {res.status(200).json(products)})
+    Helpers.getProducts().then(products => {res.status(200).json(products)})
     .catch(err => {
         res.status(500).json({message: `Error getting products`})
     })
