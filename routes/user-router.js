@@ -63,7 +63,11 @@ router.get('/users/:id/products', (req, res) => {
 })
 
 router.post('/category', (req, res) => {
-
+    Helpers.addCategory(req.body).then(category => {
+        res.status(200).json(category)
+    }).catch(err => {
+        res.status(500).json({message: `Error adding category`})
+    })
 })
 
 

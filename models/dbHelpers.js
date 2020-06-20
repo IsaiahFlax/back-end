@@ -15,7 +15,8 @@ module.exports = {
     addLocation,
     findProductsByUser,
     getLocations,
-    findProductsByLocation
+    findProductsByLocation,
+    addCategory
 }
 
 function getLocations() {
@@ -46,7 +47,7 @@ function getProducts() {
     return db('products')
  }
  async function addCategory(category) {
-    return await db('locations').insert(category, ['id'])
+    return await db('categories').insert(category, ['id'])
     // const [id] = await db('users').insert(user)
     // return findById(id)
 }
