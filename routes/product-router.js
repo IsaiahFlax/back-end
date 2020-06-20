@@ -20,8 +20,8 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     Helpers.addProducts(req.body).then(product => {
-        res.status(200).json(product).catch(err=>{res.status(500).json({message: 'error adding product'})})
-    })
+        res.status(200).json(product)
+    }).catch(err=>{res.status(500).json({message: 'error adding product'})})
 })
 
 
