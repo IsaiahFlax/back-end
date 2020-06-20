@@ -33,7 +33,7 @@ router.post('/login', (req, res) => {
             
             const token = generateToken(user)
 
-            res.status(200).json({ message: `Welcome ${user.username}`, token})
+            res.status(200).json({ message: `Welcome ${user.username}`, token, user_id: user.id})
         } else {
             res.status(401).json('Invalid Credentials')
         }
@@ -62,20 +62,8 @@ router.get('/users/:id/products', (req, res) => {
     })
 })
 
+router.post('/category', (req, res) => {
 
-router.get('/products', (req, res) => {
-    Helpers.getProducts().then(products => {res.status(200).json(products)})
-    .catch(err => {
-        res.status(500).json({message: `Error getting products`})
-    })
-})
-
-router.get('/products/:id', (req, res) => {
-    const {id } = req.params
-    Helpers.findProductById(id).then(user => {res.status(200).json(user)})
-    .catch(err => {
-        res.status(500).json({message: `Error getting product`})
-    })
 })
 
 
