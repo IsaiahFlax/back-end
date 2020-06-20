@@ -39,13 +39,17 @@ function findById(id) {
 }
 
 function getAllUsers() {
-    return db('users');
+    return db('users').select('users.username');
  }
 
 function getProducts() {
     return db('products')
  }
-
+ async function addCategory(category) {
+    return await db('locations').insert(category, ['id'])
+    // const [id] = await db('users').insert(user)
+    // return findById(id)
+}
 async function addLocation(location) {
     return await db('locations').insert(location, ['id'])
     // const [id] = await db('users').insert(user)

@@ -4,6 +4,7 @@ const helmet = require('helmet')
 
 const userRouter = require('../routes/user-router.js')
 const locationRouter = require('../routes/location-router.js')
+const productRouter = require('../routes/product-router.js')
 
 const server = express()
 
@@ -17,5 +18,6 @@ server.get('/', (req, res) => {
 
 server.use('/api/', userRouter)
 server.use('/api/locations/', locationRouter)
+server.use('/api/products/', productRouter)
 
 module.exports = server
