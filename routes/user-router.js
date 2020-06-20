@@ -70,5 +70,13 @@ router.post('/category', (req, res) => {
     })
 })
 
+router.get('/category', (req, res) => {
+    Helpers.getCategory().then(categories => {
+        res.status(200).json(categories)
+    }).catch(err => {
+        res.status(500).json({message: 'error getting categories'})
+    })
+})
+
 
 module.exports = router

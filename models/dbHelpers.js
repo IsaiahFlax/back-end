@@ -16,11 +16,16 @@ module.exports = {
     findProductsByUser,
     getLocations,
     findProductsByLocation,
-    addCategory
+    addCategory,
+    getCategory
 }
 
 function getLocations() {
     return db('locations');
+ }
+
+ function getCategory() {
+     return db('categories')
  }
 
 function findUser(username) {
