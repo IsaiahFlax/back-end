@@ -45,7 +45,7 @@ function findById(id) {
 }
 
 function getAllUsers() {
-    return db('users').select('users.username');
+    return db('users').select('users.username', 'users.firstname', 'users.lastname', 'users.email', 'users.id');
  }
 
 function getProducts() {

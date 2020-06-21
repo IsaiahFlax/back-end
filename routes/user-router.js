@@ -54,6 +54,14 @@ router.get('/users/:id', (req, res) => {
     })
 })
 
+router.delete('/users/:id', (req, res) => {
+    const {id } = req.params
+    Helpers.deleteUser(id).then(user => {res.status(200).json({message: 'deleted user'})})
+    .catch(err => {
+        res.status(500).json({message: `Error deleting user`})
+    })
+})
+
 router.get('/users/:id/products', (req, res) => {
     const {id } = req.params
     Helpers.findProductsByUser(id).then(user => {res.status(200).json(user)})
