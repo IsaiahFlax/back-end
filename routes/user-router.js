@@ -9,8 +9,8 @@ router.post('/register', (req, res) => {
     const { password } = credentials
     const hash = bcrypt.hashSync(credentials.password, 12)
     credentials.password = hash
-    const allUsers = Helpers.getAllUsers()
     Helpers.addUser(credentials)
+    const allUsers = Helpers.getAllUsers()
     .then(user => {
         res.status(200).json({user, allUsers})
     }).catch(err => {
