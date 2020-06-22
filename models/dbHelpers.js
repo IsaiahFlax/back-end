@@ -44,8 +44,8 @@ function findById(id) {
       .first();
 }
 
-function getAllUsers() {
-    return db('users').select('users.username', 'users.firstname', 'users.lastname', 'users.email', 'users.id');
+async function getAllUsers() {
+    return await db('users').select('users.username', 'users.firstname', 'users.lastname', 'users.email', 'users.id');
  }
 
 function getProducts() {
