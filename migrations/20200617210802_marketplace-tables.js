@@ -17,6 +17,7 @@ exports.up = function(knex, Promise) {
   }).createTable('products', products => {
       products.increments()
       products.string('product_name', 255)
+      products.string('description')
       products.integer('user_id')
       .unsigned()
       .notNullable()
