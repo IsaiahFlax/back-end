@@ -12,7 +12,7 @@ router.post('/register', (req, res) => {
     Helpers.addUser(credentials)
     const allUsers = Helpers.getAllUsers()
     .then(user => {
-        res.status(200).json({user, allUsers})
+        res.status(200).json({user})
     }).catch(err => {
         if (error.errno = 19) {
             res.status(400).json({ message: "username already taken"})
