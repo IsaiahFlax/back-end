@@ -10,9 +10,8 @@ router.post('/register', (req, res) => {
     const hash = bcrypt.hashSync(credentials.password, 12)
     credentials.password = hash
     Helpers.addUser(credentials)
-    const allUsers = Helpers.getAllUsers()
     .then(user => {
-        res.status(200).json({user, allUsers})
+        res.status(200).json(user)
     }).catch(err => {
         if (error.errno = 19) {
             res.status(400).json({ message: "username already taken"})

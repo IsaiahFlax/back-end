@@ -39,7 +39,7 @@ function findUser(username) {
 
 async function addUser(user) {
     await db('users').insert(user, ['id'])
-    return getAllUsers()
+    return await getAllUsers()
 
     // const [id] = await db('users').insert(user)
     // return findById(id)
