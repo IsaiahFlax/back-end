@@ -17,7 +17,12 @@ module.exports = {
     getLocations,
     findProductsByLocation,
     addCategory,
-    getCategory
+    getCategory,
+    removeProduct
+}
+
+function removeProduct(id) {
+    return db('products').where({ 'id': id}).del()
 }
 
 function getLocations() {
@@ -33,7 +38,8 @@ function findUser(username) {
 }
 
 async function addUser(user) {
-    return await db('users').insert(user, ['id'])
+    await db('users').insert(user, ['id'])
+    return await db(users)
     // const [id] = await db('users').insert(user)
     // return findById(id)
 }
