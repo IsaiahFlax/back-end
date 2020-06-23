@@ -24,5 +24,12 @@ router.post('/', (req, res) => {
     }).catch(err=>{res.status(500).json({message: 'error adding product'})})
 })
 
+router.delete('/:id', (req, res) => {
+    const { id } = req.params
+    Helpers.removeProduct(id).then(product => {
+        res.status(200).json({message: `deleted product with id ${id}`})
+    }).catch(err=>{res.status(500).json({message: 'error deleting product'})})
+})
+
 
 module.exports = router
