@@ -83,7 +83,7 @@ async function editProduct(id) {
         'price': price,
         'location_id': location_id,
         'category_id': category_id
-    })
+    }, ['id', 'product_name', 'description', 'price', 'location_id', 'category_id'])
 }
 // async function editUser(id) {
 //     return await db('users').where({'id': id}).update({
