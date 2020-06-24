@@ -84,7 +84,7 @@ async function editProduct(id, changes) {
 }
 
 async function editUser(id, changes) {
-    return await db('user')
+    return await db('users')
     .where({id})
     .update(changes, '*')
 }
