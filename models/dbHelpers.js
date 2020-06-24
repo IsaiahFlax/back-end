@@ -18,7 +18,8 @@ module.exports = {
     findProductsByLocation,
     addCategory,
     getCategory,
-    removeProduct
+    removeProduct,
+    editProduct
 }
 
 function removeProduct(id) {
@@ -74,6 +75,24 @@ async function addLocation(location) {
     // const [id] = await db('users').insert(user)
     // return findById(id)
 }
+
+async function editProduct(id) {
+    return await db('products').where({'id': id}).update({
+        "product_name": product_name,
+        "description": description,
+        'price': price,
+        'location_id': location_id,
+        'category_id': category_id
+    })
+}
+// async function editUser(id) {
+//     return await db('users').where({'id': id}).update({
+//         "username": username,
+//         "description": description,
+//         'price': price,
+//         'location_id': location_id
+//     })
+// }
 
 function findProductsById(id) {
     return db('products').where({ id }).first()

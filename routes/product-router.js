@@ -31,5 +31,13 @@ router.delete('/:id', (req, res) => {
     }).catch(err=>{res.status(500).json({message: 'error deleting product'})})
 })
 
+router.put('/:id', (req, res) => {
+    Helpers.editProduct(id).then(product => {
+        res.status(200).json(product)
+    }).catch(err=>{
+        res.status(500).json({ message: 'error updating product'})
+    })
+})
+
 
 module.exports = router
