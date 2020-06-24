@@ -32,10 +32,10 @@ router.delete('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
+    const changes = req.body
     const {id} = req.params
-    Helpers.editProduct(id).then(product => {
+    Helpers.editProduct(id, changes).then(product => {
         res.status(200).json(product)
-        console.log('product put res', res)
     }).catch(err=>{
         res.status(500).json({ message: 'error updating product',
     err})

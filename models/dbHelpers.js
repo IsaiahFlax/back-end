@@ -76,15 +76,12 @@ async function addLocation(location) {
     // return findById(id)
 }
 
-async function editProduct(id) {
-    return await db('products').where({'id': id}).update({
-        "product_name": product_name,
-        "description": description,
-        'price': price,
-        'location_id': location_id,
-        'category_id': category_id
-    }, ['id', 'product_name', 'description', 'price', 'location_id', 'category_id'])
+async function editProduct(id, changes) {
+    return await db('products')
+    .where({id})
+    .update(changes, '*')
 }
+
 // async function editUser(id) {
 //     return await db('users').where({'id': id}).update({
 //         "username": username,
