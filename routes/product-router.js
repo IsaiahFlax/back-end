@@ -1,6 +1,7 @@
 const express = require('express')
 const Helpers = require('../models/dbHelpers.js')
 const router = express.Router()
+const restricted = require('../auth/restricted-middleware.js')
 
 
 router.get('/', (req, res) => {
@@ -18,20 +19,20 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', restricted, (req, res) => {
     Helpers.addProducts(req.body).then(product => {
         res.status(200).json(product)
     }).catch(err=>{res.status(500).json({message: 'error adding product'})})
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', restricted, (req, res) => {
     const { id } = req.params
     Helpers.removeProduct(id).then(product => {
         res.status(200).json(id)
     }).catch(err=>{res.status(500).json({message: 'error deleting product'})})
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', restricted, (req, res) => {
     const changes = req.body
     const {id} = req.params
     Helpers.editProduct(id, changes).then(product => {
