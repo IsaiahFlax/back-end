@@ -19,7 +19,8 @@ module.exports = {
     addCategory,
     getCategory,
     removeProduct,
-    editProduct
+    editProduct,
+    editUser
 }
 
 function removeProduct(id) {
@@ -78,6 +79,12 @@ async function addLocation(location) {
 
 async function editProduct(id, changes) {
     return await db('products')
+    .where({id})
+    .update(changes, '*')
+}
+
+async function editUser(id, changes) {
+    return await db('user')
     .where({id})
     .update(changes, '*')
 }

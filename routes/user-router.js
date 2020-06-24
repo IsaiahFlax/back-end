@@ -62,6 +62,17 @@ router.delete('/users/:id', (req, res) => {
     })
 })
 
+router.put('users/:id', (req, res) => {
+    const changes = req.body
+    const {id} = req.params
+    Helpers.editUser(id, changes).then(user => {
+        res.status(200).json(user)
+    }).catch(err=>{
+        res.status(500).json({ message: 'error updating user',
+    err})
+    })
+})
+
 router.get('/users/:id/products', (req, res) => {
     const {id } = req.params
     Helpers.findProductsByUser(id).then(user => {res.status(200).json(user)})
