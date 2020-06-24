@@ -32,6 +32,7 @@ router.delete('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
+    const {id} = req.params
     Helpers.editProduct(id).then(product => {
         res.status(200).json(product)
     }).catch(err=>{
