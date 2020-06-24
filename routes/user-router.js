@@ -62,7 +62,7 @@ router.delete('/users/:id', (req, res) => {
     })
 })
 
-router.put('users/:id', (req, res) => {
+router.put('/users/:id', (req, res) => {
     const changes = req.body
     const {id} = req.params
     Helpers.editUser(id, changes).then(user => {
