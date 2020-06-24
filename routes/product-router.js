@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
     const { id } = req.params
     Helpers.removeProduct(id).then(product => {
-        res.status(200).json({message: `deleted product with id ${id}`})
+        res.status(200).json(id)
     }).catch(err=>{res.status(500).json({message: 'error deleting product'})})
 })
 
