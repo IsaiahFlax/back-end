@@ -37,7 +37,9 @@ router.post('/login', (req, res) => {
         } else {
             res.status(401).json('Invalid Credentials')
         }
-    }).catch()
+    }).catch(err=> {
+        res.status(500).json(err)
+    })
 })
 
 router.get('/users', (req, res) => {
